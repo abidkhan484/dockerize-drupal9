@@ -36,7 +36,7 @@ services:
     composer:
         image: "composer"
         volumes:
-            - "./web:/app"
+            - "${PROJECT_DIR}:/app"
         command: composer install --ignore-platform-reqs
     myadmin:
         image: phpmyadmin/phpmyadmin
