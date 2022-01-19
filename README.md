@@ -2,6 +2,8 @@
 
 Docker running Nginx, PHP-FPM, Composer, MySQL and PHPMyAdmin.
 
+## Credit goes to [this repo](https://github.com/nanoninja/docker-nginx-php-mysql)
+
 ## Overview
 
 1. [Install prerequisites](#install-prerequisites)
@@ -99,20 +101,19 @@ ___
 To install [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git), download it and install following the instructions :
 
 ```sh
-git clone https://github.com/nanoninja/docker-nginx-php-mysql.git
+git clone https://github.com/abidkhan484/dockerize-drupal9
 ```
 
 Go to the project directory :
 
 ```sh
-cd docker-nginx-php-mysql
+cd dockerize-drupal9
 ```
 
 ### Project tree
 
 ```sh
 .
-├── Makefile
 ├── README.md
 ├── data
 │   └── db
@@ -122,22 +123,15 @@ cd docker-nginx-php-mysql
 ├── docker-compose.yml
 ├── etc
 │   ├── nginx
-│   │   ├── default.conf
-│   │   └── default.template.conf
+│   │   ├── nginx.conf
+│   │   └── conf.d
+|   │       ├── default.conf
+|   │       └── default.template.conf
 │   ├── php
+│   │   └── Dockerfile
 │   │   └── php.ini
 │   └── ssl
-└── web
-    ├── app
-    │   ├── composer.json.dist
-    │   ├── phpunit.xml.dist
-    │   ├── src
-    │   │   └── Foo.php
-    │   └── test
-    │       ├── FooTest.php
-    │       └── bootstrap.php
-    └── public
-        └── index.php
+└── {Drupal9_Project_Repo_Dir}
 ```
 
 ___
@@ -195,10 +189,10 @@ ___
 
 ## Run the application
 
-1. Copying the composer configuration file : 
+1. Go to the repo root directory and clone your drupal 9 project : 
 
     ```sh
-    cp web/app/composer.json.dist web/app/composer.json
+    git clone {drupal9_repo}
     ```
 
 2. Start the application :
