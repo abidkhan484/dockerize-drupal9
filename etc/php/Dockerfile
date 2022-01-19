@@ -37,7 +37,6 @@ RUN apt-get update && apt-get upgrade -y \
     mysqli \
     opcache \
     pdo_mysql \
-    pdo_pgsql \
     soap \
     sockets \
     xmlrpc \
