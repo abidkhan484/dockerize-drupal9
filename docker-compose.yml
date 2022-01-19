@@ -21,7 +21,7 @@ services:
         # restart: always
         depends_on:
             - php
-            - mysqldb
+            # - mysqldb
     php:
         build:
             context: .
@@ -38,38 +38,38 @@ services:
         volumes:
             - "${PROJECT_DIR}:/app"
         command: composer install --ignore-platform-reqs
-    myadmin:
-        image: phpmyadmin/phpmyadmin
-        container_name: phpmyadmin
-        ports:
-            - "8080:80"
-        networks:
-            mynetwork:
-                ipv4_address: ${PMA_HOST_IP}
-        environment:
-            - PMA_ARBITRARY=1
-            - PMA_HOST=${MYSQL_HOST}
-        # restart: always
-        depends_on:
-            - mysqldb
-    mysqldb:
-        image: mysql:${MYSQL_VERSION}
-        container_name: ${MYSQL_HOST}
-        # restart: always
-        env_file:
-            - ".env"
-        environment:
-            - MYSQL_DATABASE=${MYSQL_DATABASE}
-            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-            - MYSQL_USER=${MYSQL_USER}
-            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-        ports:
-            - "8989:3306"
-        networks:
-            mynetwork:
-                ipv4_address: ${MYSQL_HOST_IP}
-        volumes:
-            - "${MYSQL_DB_FILES}:/var/lib/mysql"
+    # myadmin:
+    #     image: phpmyadmin/phpmyadmin
+    #     container_name: phpmyadmin
+    #     ports:
+    #         - "8080:80"
+    #     networks:
+    #         mynetwork:
+    #             ipv4_address: ${PMA_HOST_IP}
+    #     environment:
+    #         - PMA_ARBITRARY=1
+    #         - PMA_HOST=${MYSQL_HOST}
+    #     # restart: always
+    #     depends_on:
+    #         - mysqldb
+    # mysqldb:
+    #     image: mysql:${MYSQL_VERSION}
+    #     container_name: ${MYSQL_HOST}
+    #     # restart: always
+    #     env_file:
+    #         - ".env"
+    #     environment:
+    #         - MYSQL_DATABASE=${MYSQL_DATABASE}
+    #         - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    #         - MYSQL_USER=${MYSQL_USER}
+    #         - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    #     ports:
+    #         - "8989:3306"
+    #     networks:
+    #         mynetwork:
+    #             ipv4_address: ${MYSQL_HOST_IP}
+    #     volumes:
+    #         - "${MYSQL_DB_FILES}:/var/lib/mysql"
 
 networks:
     mynetwork:
