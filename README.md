@@ -261,13 +261,13 @@ ___
 ### Installing package with composer
 
 ```sh
-docker run --rm -v $(pwd)/web/app:/app composer require phpunit
+docker run --rm -v $(pwd):/app composer require phpunit
 ```
 
 ### Updating PHP dependencies with composer
 
 ```sh
-docker run --rm -v $(pwd)/web/app:/app composer update
+docker run --rm -v $(pwd):/app composer update
 ```
 
 ### Generating PHP API documentation
